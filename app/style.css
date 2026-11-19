@@ -1,12 +1,45 @@
-html, body { margin: 0; height: 100%; background: #f2f0f4; color: #1d1b22; font: 15px/1.4 system-ui, sans-serif; }
-.app { display: flex; gap: 32px; align-items: center; justify-content: center; height: 100%; padding: 24px; box-sizing: border-box; }
-.controls { display: flex; flex-direction: column; gap: 14px; width: 280px; }
-.controls h1 { margin: 0; font-size: 28px; }
-.controls p { margin: 0; color: #5c5866; }
-label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; }
-input[type=text] { font: inherit; padding: 8px; border: 1px solid #c9c4d1; border-radius: 6px; }
-button { font: inherit; font-weight: 700; padding: 10px; border: 0; border-radius: 6px; background: #1d1b22; color: #fff; cursor: pointer; }
-canvas { width: min(70vh, 60vw); height: min(70vh, 60vw); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); }
-body.shot-cover .controls { display: none; }
-body.shot-cover .app { padding: 0; }
-body.shot-cover canvas { width: 100vw; height: 100vh; box-shadow: none; }
+html, body { margin: 0; min-height: 100%; background: #160a20; color: #f5eefc; font: 15px/1.45 system-ui, sans-serif; }
+.app { display: flex; gap: 28px; align-items: flex-start; justify-content: center; padding: 24px; box-sizing: border-box; }
+.controls { width: 340px; flex-shrink: 0; display: flex; flex-direction: column; gap: 18px; }
+.controls h1 { margin: 0; font-size: 30px; font-weight: 900; letter-spacing: 1px; background: linear-gradient(90deg, #ff9e4d, #ff4d7e, #c94dff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.tagline { margin: 6px 0 0; color: #cbb8d8; }
+.group { background: #241233; border: 1px solid #3d2350; border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.group h2 { margin: 0; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; color: #ff9e4d; }
+.hint { margin: 0; color: #cbb8d8; font-size: 13px; }
+label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 13px; }
+label.check { flex-direction: row; align-items: center; }
+input[type=text] { font: inherit; padding: 8px; border: 1px solid #5a3a72; border-radius: 6px; background: #160a20; color: #f5eefc; }
+input[type=range] { width: 100%; accent-color: #ff4d7e; }
+input[type=color] { width: 100%; height: 34px; padding: 2px; border: 1px solid #5a3a72; border-radius: 6px; background: #160a20; cursor: pointer; }
+.color-row { display: flex; gap: 12px; }
+.color-row label { flex: 1; }
+button { font: inherit; font-weight: 700; padding: 10px 12px; border: 0; border-radius: 8px; background: #ff4d7e; color: #fff; cursor: pointer; }
+button:hover { background: #ff6a92; }
+button:disabled { opacity: 0.45; cursor: default; }
+.panels { display: flex; flex-direction: column; gap: 10px; }
+.panel-card { background: #160a20; border: 2px solid #3d2350; border-radius: 10px; padding: 10px; cursor: pointer; display: flex; flex-direction: column; gap: 8px; }
+.panel-card.selected { border-color: #ff4d7e; box-shadow: 0 0 0 2px rgba(255, 77, 126, 0.4); }
+.panel-card h3 { margin: 0; font-size: 14px; }
+.panel-meta { margin: 0; color: #cbb8d8; font-size: 12px; overflow-wrap: anywhere; }
+.file-btn { display: inline-block; background: #c94dff; color: #fff; font-weight: 700; text-align: center; padding: 8px; border-radius: 6px; cursor: pointer; }
+.file-btn input { display: none; }
+.sample-row, .card-row, .export-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip { background: #3d2350; color: #f5eefc; padding: 7px 10px; font-size: 13px; flex: 1; }
+.chip:hover { background: #4d2c66; }
+.export-row button { flex: 1; background: #ff9e4d; color: #1a0b26; }
+.export-row button:hover { background: #ffb26e; }
+#status { margin: 0; color: #cbb8d8; font-size: 13px; min-height: 18px; }
+.preview { position: sticky; top: 24px; display: flex; flex-direction: column; gap: 10px; align-items: center; }
+#cover { width: min(72vh, 58vw); height: min(72vh, 58vw); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55); border-radius: 4px; touch-action: none; cursor: grab; }
+#cover.dropping { outline: 3px dashed #ff9e4d; outline-offset: 4px; }
+.preview-hint { margin: 0; color: #cbb8d8; font-size: 13px; }
+body.shot-cover .controls, body.shot-cover .preview-hint { display: none; }
+body.shot-cover { background: #000; }
+body.shot-cover .app { padding: 0; display: block; }
+body.shot-cover .preview { position: static; }
+body.shot-cover #cover { width: 100vw; height: 100vh; object-fit: contain; box-shadow: none; border-radius: 0; }
+@media (max-width: 900px) {
+  .app { flex-direction: column; align-items: center; }
+  .controls { width: min(94vw, 480px); }
+  #cover { width: min(94vw, 72vh); height: min(94vw, 72vh); }
+}
